@@ -1,5 +1,7 @@
 using Magic_Villa_7;
 using Magic_Villa_7.Datos;
+using Magic_Villa_7.Repositorio;
+using Magic_Villa_7.Repositorio.IRepositorio;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +20,8 @@ builder.Services.AddDbContext<ApplicationDBContext>(option =>
 
 builder.Services.AddAutoMapper(typeof(MappingConfig));
 
+builder.Services.AddScoped<IVillaRepositorio, VillaRepositorio>();
+builder.Services.AddScoped<INumeroVillaRepositorio, NumeroVillaRepositorio>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
